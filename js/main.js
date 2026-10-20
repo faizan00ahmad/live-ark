@@ -189,8 +189,6 @@ function initReveals() {
     gsap.fromTo(word, { xPercent: 0 }, { xPercent: -30, ease: "none", scrollTrigger: { trigger: ".site-footer", start: "top bottom", end: "bottom bottom", scrub: true } });
   }
 
-  const svcBar = $("[data-services-progress]");
-  if (svcBar) gsap.to(svcBar, { scaleX: 1, ease: "none", scrollTrigger: { trigger: ".service-list", start: "top 60%", end: "bottom 60%", scrub: true } });
 
   // stacking cards scale back as the next one slides over
   const cards = $$("[data-stack-card]");
@@ -319,53 +317,50 @@ function refreshSoon() {
   refreshTimer = setTimeout(() => (hasGSAP ? ScrollTrigger.refresh() : voyage.build()), 80);
 }
 
-/* ---------- pointer niceties: cursor, magnetic, tilt, glow cards ---------- */
+/* ---------- soft light that follows the pointer on feature cards ---------- */
 function initPointer() {
   if (!motion || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-  root.classList.add("has-cursor");
-  const cursor = $("[data-cursor]");
-  const label = $("[data-cursor-label]");
-  const dotX = gsap.quickTo(".cursor__dot", "x", { duration: 0.12, ease: "power3" });
-  const dotY = gsap.quickTo(".cursor__dot", "y", { duration: 0.12, ease: "power3" });
-  const ringX = gsap.quickTo([".cursor__ring", ".cursor__label"], "x", { duration: 0.5, ease: "power3" });
-  const ringY = gsap.quickTo([".cursor__ring", ".cursor__label"], "y", { duration: 0.5, ease: "power3" });
-  window.addEventListener("pointermove", (e) => { dotX(e.clientX); dotY(e.clientY); ringX(e.clientX); ringY(e.clientY); });
-  document.addEventListener("pointerover", (e) => {
-    const vessel = e.target.closest(".vessel");
-    cursor.classList.toggle("is-label", Boolean(vessel));
-    label.textContent = vessel ? "View" : "";
-    cursor.classList.toggle("is-hover", !vessel && Boolean(e.target.closest("a, button, [data-tilt], .faq__q")));
-  });
-
-  $$("[data-magnetic]").forEach((el) => {
-    const mx = gsap.quickTo(el, "x", { duration: 0.6, ease: "power3" });
-    const my = gsap.quickTo(el, "y", { duration: 0.6, ease: "power3" });
-    el.addEventListener("pointermove", (e) => {
-      const r = el.getBoundingClientRect();
-      mx((e.clientX - r.left - r.width / 2) * 0.3);
-      my((e.clientY - r.top - r.height / 2) * 0.4);
-    });
-    el.addEventListener("pointerleave", () => { mx(0); my(0); });
-  });
-
-  $$("[data-tilt]").forEach((el) => {
-    gsap.set(el, { transformPerspective: 900 });
-    const rx = gsap.quickTo(el, "rotationX", { duration: 0.8, ease: "power3" });
-    const ry = gsap.quickTo(el, "rotationY", { duration: 0.8, ease: "power3" });
-    el.addEventListener("pointermove", (e) => {
-      const r = el.getBoundingClientRect();
-      ry(((e.clientX - r.left) / r.width - 0.5) * 10);
-      rx(-((e.clientY - r.top) / r.height - 0.5) * 10);
-    });
-    el.addEventListener("pointerleave", () => { rx(0); ry(0); });
-  });
-
   $$("[data-glow-card]").forEach((el) => {
     el.addEventListener("pointermove", (e) => {
       const r = el.getBoundingClientRect();
       el.style.setProperty("--mx", `${e.clientX - r.left}px`);
       el.style.setProperty("--my", `${e.clientY - r.top}px`);
     });
+  });
+}
+
+/* ---------- services: the item in the middle of the viewport drives the sticky image ---------- */
+function initShowcase() {
+  const root = $("[data-showcase]");
+  if (!root) return;
+  const items = $$("[data-showcase-item]", root);
+  const imgs = $$("[data-showcase-img]", root);
+  const count = $("[data-showcase-count]", root);
+  const bar = $("[data-showcase-bar]", root);
+  const setActive = (i) => {
+    items.forEach((el, n) => el.classList.toggle("is-active", n === i));
+    imgs.forEach((el, n) => el.classList.toggle("is-active", n === i));
+    if (count) count.textContent = String(i + 1).padStart(2, "0");
+    if (bar) bar.style.transform = `scaleX(${(i + 1) / items.length})`;
+  };
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) setActive(Number(e.target.dataset.showcaseItem)); });
+  }, { rootMargin: "-48% 0px -48% 0px" });
+  items.forEach((el) => io.observe(el));
+}
+
+/* ---------- offices: hovering or focusing an office lights its pin on the map ---------- */
+function initAtlas() {
+  const pins = $$("[data-pin]");
+  $$("[data-office]").forEach((row) => {
+    const pin = pins.find((p) => p.dataset.pin === row.dataset.office);
+    if (!pin) return;
+    const on = () => { pin.classList.add("is-active"); row.classList.add("is-active"); };
+    const off = () => { pin.classList.remove("is-active"); row.classList.remove("is-active"); };
+    row.addEventListener("pointerenter", on);
+    row.addEventListener("pointerleave", off);
+    row.addEventListener("focus", on);
+    row.addEventListener("blur", off);
   });
 }
 
@@ -599,6 +594,8 @@ initMarquee();
 initFleet();
 initFaq();
 initPointer();
+initShowcase();
+initAtlas();
 const boot = () => {
   initReveals();
   if (hasGSAP) ScrollTrigger.refresh(); else voyage.build();

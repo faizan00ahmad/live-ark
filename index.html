@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700;800;900&display=swap">
   <link rel="preload" as="image" href="images/brand/hero-poster.jpg">
-  <link rel="stylesheet" href="css/styles.css?v=6">
+  <link rel="stylesheet" href="css/styles.css?v=12">
   <script>
     document.documentElement.classList.add("js");
     try { if (sessionStorage.getItem("la-loaded")) document.documentElement.classList.add("no-preload"); } catch (e) {}
@@ -100,7 +100,6 @@
   </div>
 
   <div class="scroll-progress" aria-hidden="true"><span data-progress></span></div>
-  <div class="cursor" aria-hidden="true" data-cursor><span class="cursor__ring"></span><span class="cursor__dot"></span><span class="cursor__label" data-cursor-label></span></div>
 
   <!-- ============ header ============ -->
   <header class="site-header" data-header>
@@ -119,7 +118,7 @@
         </ul>
         <button class="btn btn--glow primary-nav__cta" type="button" data-open-contact>Contact Us</button>
       </nav>
-      <button class="btn btn--glow site-header__cta" type="button" data-open-contact data-magnetic><span>Contact Us</span></button>
+      <button class="btn btn--glow site-header__cta" type="button" data-open-contact><span>Contact Us</span></button>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu" data-nav-toggle>
         <span></span><span></span>
       </button>
@@ -193,8 +192,8 @@
         <div class="hero__row">
           <p class="hero__lead" data-hero-fade>At Live Ark Export, we specialize in sourcing and delivering top quality cattle breeds including Angus, Simmental, Charolais, Nelore, and more to global markets. With years of experience across Europe, South America, and the Middle East, we ensure every animal is transported with the highest standards of care. Backed by a fleet of dedicated livestock vessels, we handle the journey from farm to destination with precision and reliability.</p>
           <div class="hero__actions" data-hero-fade>
-            <button class="btn btn--glow btn--lg" type="button" data-open-contact data-magnetic><span>Contact Us</span><svg class="btn__icon"><use href="#i-arrow"/></svg></button>
-            <a class="btn btn--ghost btn--lg" href="#vessels" data-scroll-to data-magnetic><span>Explore the fleet</span></a>
+            <button class="btn btn--glow btn--lg" type="button" data-open-contact><span>Contact Us</span><svg class="btn__icon"><use href="#i-arrow"/></svg></button>
+            <a class="btn btn--ghost btn--lg" href="#vessels" data-scroll-to><span>Explore the fleet</span></a>
           </div>
         </div>
         <ul class="stats" aria-label="Live Ark Export at a glance">
@@ -221,57 +220,47 @@
     </section>
 
     <!-- ============ ABOUT ============ -->
-    <section class="section light about" id="about" data-sea aria-labelledby="about-title">
+        <section class="section light about" id="about" data-sea aria-labelledby="about-title">
       <div class="container" data-sea-content>
-        <header class="section-head section-head--split">
+        <header class="about__head">
           <div>
-            <p class="eyebrow"><span class="eyebrow__dot"></span>About Us</p>
+            <p class="eyebrow"><span class="eyebrow__dot"></span><span class="eyebrow__num">01</span>About Us</p>
             <h2 class="section-title" id="about-title" data-split>Our Story</h2>
           </div>
-          <p class="section-head__aside" data-reveal>Live Ark Export — Redefining Global Livestock Trade</p>
+          <p class="about__kicker" data-reveal>Live Ark Export — Redefining Global Livestock Trade</p>
         </header>
 
-        <div class="story">
-          <figure class="story__media" data-wipe>
-            <div class="story__frame"><img src="images/about/our-story-cow.jpg" alt="Close-up of a brown cow with small horns looking directly at the camera" width="740" height="740" loading="lazy" decoding="async" data-parallax-img></div>
-            <figcaption class="story__badge glass glass--light"><strong>Est. 2024</strong><span>Mullingar, Ireland</span></figcaption>
+        <p class="about__statement" data-split-lines>Live Ark Export was founded on a simple but powerful mission to elevate the global livestock trade through transparency, ethical standards, and unmatched quality.</p>
+
+        <div class="about__grid">
+          <ol class="about__points" data-stagger>
+            <li><span class="about__idx">i.</span><p>Built on decades of industry experience, our company is driven by a deep commitment to animal welfare, international trust, and operational excellence.</p></li>
+            <li><span class="about__idx">ii.</span><p>We specialize in the export of premium livestock breeds including Limousin, Brangus, Zebu, Aubrac, Hereford, and more to discerning markets around the world. Our reach extends across Europe, the Middle East, North Africa, South America, and Asia, with an integrated supply chain that ensures complete control from source to destination.</p></li>
+            <li><span class="about__idx">iii.</span><p>Our success is rooted in long-standing partnerships with farms, quarantine facilities, and logistics providers across multiple continents, allowing us to deliver consistency, quality, and care at every stage of the journey.</p></li>
+          </ol>
+          <figure class="about__media">
+            <div class="about__frame" data-wipe><img src="images/about/our-story-cow.jpg" alt="Close-up of a brown cow with small horns looking directly at the camera" width="740" height="740" loading="lazy" decoding="async" data-parallax-img></div>
+            <figcaption class="about__caption" data-reveal>
+              <span class="about__caption-label">Mullingar, Ireland · Est. 2024</span>
+              Our head office is located in Ireland, with regional offices and trusted partners across Europe, the Arab world, the Americas, and Asia.
+            </figcaption>
           </figure>
-          <div class="story__body">
-            <p class="story__lead" data-split-lines>Live Ark Export was founded on a simple but powerful mission to elevate the global livestock trade through transparency, ethical standards, and unmatched quality.</p>
-            <p data-reveal>Built on decades of industry experience, our company is driven by a deep commitment to animal welfare, international trust, and operational excellence.</p>
-            <p data-reveal>We specialize in the export of premium livestock breeds including Limousin, Brangus, Zebu, Aubrac, Hereford, and more to discerning markets around the world. Our reach extends across Europe, the Middle East, North Africa, South America, and Asia, with an integrated supply chain that ensures complete control from source to destination.</p>
-            <p data-reveal>Our success is rooted in long-standing partnerships with farms, quarantine facilities, and logistics providers across multiple continents, allowing us to deliver consistency, quality, and care at every stage of the journey.</p>
-          </div>
         </div>
 
-        <div class="reach">
-          <div class="reach__intro" data-reveal>
-            <h3 class="reach__title">Global Reach, Local Expertise</h3>
-            <p>Our head office is located in Ireland, with regional offices and trusted partners across Europe, the Arab world, the Americas, and Asia.</p>
-            <p>With our headquarters in Ireland and a strategic network of regional offices and trusted partners across the globe, we maintain an active presence in:</p>
-          </div>
-          <ul class="regions" data-stagger>
-            <li><strong>Europe</strong><span>Ireland, United Kingdom, Spain, France, Romania, Croatia, Moldova</span></li>
-            <li><strong>Americas</strong><span>Brazil, Uruguay</span></li>
-            <li><strong>MENA</strong><span>Algeria, Egypt, Saudi Arabia, UAE, and other Gulf and North African countries</span></li>
-            <li><strong>Asia</strong><span>Expanding partnerships in key livestock import markets</span></li>
-          </ul>
-          <div class="reach__foot" data-reveal>
-            <p>This global footprint allows us to serve our clients with flexibility, speed, and precision—no matter where they are.</p>
-            <button class="btn btn--navy" type="button" data-open-contact data-magnetic><span>Contact Us</span><svg class="btn__icon"><use href="#i-arrow"/></svg></button>
-          </div>
-        </div>
-
-        <div class="pillars" data-stagger>
-          <article class="pillar" data-tilt>
-            <span class="pillar__icon"><svg class="draw"><use href="#i-target"/></svg></span>
-            <h3>Our Mission</h3>
-            <p>To connect premium livestock to global markets through responsible trade, world-class logistics, and a deep commitment to animal welfare. We aim to deliver every shipment with care, compliance, and complete transparency.</p>
+        <div class="credos">
+          <article class="credo" data-reveal>
+            <span class="credo__word" aria-hidden="true">Mission</span>
+            <div class="credo__body">
+              <h3><span class="credo__icon"><svg><use href="#i-target"/></svg></span>Our Mission</h3>
+              <p>To connect premium livestock to global markets through responsible trade, world-class logistics, and a deep commitment to animal welfare. We aim to deliver every shipment with care, compliance, and complete transparency.</p>
+            </div>
           </article>
-          <article class="pillar" data-tilt>
-            <span class="pillar__icon"><svg class="draw"><use href="#i-eye"/></svg></span>
-            <h3>Our Vision</h3>
-            <p>To be a global leader in ethical livestock export known not just for our reach, but for our reliability, integrity, and compassion in every step of the journey.</p>
+          <article class="credo" data-reveal>
+            <span class="credo__word" aria-hidden="true">Vision</span>
+            <div class="credo__body">
+              <h3><span class="credo__icon"><svg><use href="#i-eye"/></svg></span>Our Vision</h3>
+              <p>To be a global leader in ethical livestock export known not just for our reach, but for our reliability, integrity, and compassion in every step of the journey.</p>
+            </div>
           </article>
         </div>
       </div>
@@ -282,7 +271,7 @@
       <div class="glow glow--left" aria-hidden="true"></div>
       <div class="container" data-sea-content>
         <header class="section-head">
-          <p class="eyebrow"><span class="eyebrow__dot"></span>Our purpose</p>
+          <p class="eyebrow"><span class="eyebrow__dot"></span><span class="eyebrow__num">02</span></p>
           <h2 class="section-title" id="why-we-title" data-split>Why We Do It</h2>
         </header>
         <div class="stack">
@@ -315,50 +304,57 @@
     </section>
 
     <!-- ============ SERVICES ============ -->
-    <section class="section light services" id="services" data-sea aria-labelledby="services-title">
-      <div class="container services__grid" data-sea-content>
+        <section class="section light services" id="services" data-sea aria-labelledby="services-title">
+      <div class="container" data-sea-content>
         <header class="services__head">
-          <div class="services__sticky">
-            <p class="eyebrow"><span class="eyebrow__dot"></span>What we do</p>
-            <h2 class="section-title" id="services-title" data-split>Our Services</h2>
-            <p class="services__intro" data-reveal>From certified farms to the destination port, every stage of the export is handled by one accountable team.</p>
-            <div class="services__progress" aria-hidden="true"><span data-services-progress></span></div>
-          </div>
+          <p class="eyebrow"><span class="eyebrow__dot"></span><span class="eyebrow__num">03</span></p>
+          <h2 class="section-title" id="services-title" data-split>Our Services</h2>
         </header>
-        <ol class="service-list">
-          <li class="service" data-service>
-            <figure class="service__media" data-wipe><img src="images/services/livestock-sourcing.jpg" alt="White cow with her young calf in a livestock barn" width="740" height="472" loading="lazy" decoding="async" data-parallax-img></figure>
-            <div class="service__body">
-              <span class="service__num">01</span>
-              <h3>Livestock Sourcing &amp; Breed Selection</h3>
-              <p>We partner directly with certified farms and breeders across Europe and South America to source top-tier cattle breeds.</p>
+        <div class="showcase" data-showcase>
+          <ol class="showcase__list">
+            <li class="showcase__item is-active" data-showcase-item="0">
+              <figure class="showcase__inline"><img src="images/services/livestock-sourcing.jpg" alt="White cow with her young calf in a livestock barn" width="740" height="472" loading="lazy" decoding="async"></figure>
+              <span class="showcase__num">01</span>
+              <div class="showcase__text">
+                <h3>Livestock Sourcing &amp; Breed Selection</h3>
+                <p>We partner directly with certified farms and breeders across Europe and South America to source top-tier cattle breeds.</p>
+              </div>
+            </li>
+            <li class="showcase__item" data-showcase-item="1">
+              <figure class="showcase__inline"><img src="images/services/pre-export-vet.jpg" alt="Veterinarian with a stethoscope examining a brown and white cow" width="740" height="472" loading="lazy" decoding="async"></figure>
+              <span class="showcase__num">02</span>
+              <div class="showcase__text">
+                <h3>Pre-Export Checks &amp; Vet Approval</h3>
+                <p>All livestock undergo rigorous veterinary screening and pre-export quarantine in our licensed holding facilities.</p>
+              </div>
+            </li>
+            <li class="showcase__item" data-showcase-item="2">
+              <figure class="showcase__inline"><img src="images/services/maritime-transport.jpg" alt="Multi-deck livestock carrier vessel moored in port" width="1024" height="654" loading="lazy" decoding="async"></figure>
+              <span class="showcase__num">03</span>
+              <div class="showcase__text">
+                <h3>Maritime Transport &amp; Onboard Animal Care</h3>
+                <p>We operate a fleet of specialized livestock vessels with capacities ranging from 2,000 to over 11,000 head.</p>
+              </div>
+            </li>
+            <li class="showcase__item" data-showcase-item="3">
+              <figure class="showcase__inline"><img src="images/services/port-customs.jpg" alt="Official stamping export documentation on a desk" width="1208" height="685" loading="lazy" decoding="async"></figure>
+              <span class="showcase__num">04</span>
+              <div class="showcase__text">
+                <h3>Port Operations, Customs &amp; Documentation</h3>
+                <p>Our team handles all pre-departure and arrival documentation with local authorities, port officials, and customs.</p>
+              </div>
+            </li>
+          </ol>
+          <div class="showcase__stage" aria-hidden="true">
+            <div class="showcase__frame">
+              <img class="showcase__img is-active" data-showcase-img="0" src="images/services/livestock-sourcing.jpg" alt="" width="740" height="472" loading="lazy" decoding="async">
+              <img class="showcase__img" data-showcase-img="1" src="images/services/pre-export-vet.jpg" alt="" width="740" height="472" loading="lazy" decoding="async">
+              <img class="showcase__img" data-showcase-img="2" src="images/services/maritime-transport.jpg" alt="" width="1024" height="654" loading="lazy" decoding="async">
+              <img class="showcase__img" data-showcase-img="3" src="images/services/port-customs.jpg" alt="" width="1208" height="685" loading="lazy" decoding="async">
             </div>
-          </li>
-          <li class="service" data-service>
-            <figure class="service__media" data-wipe><img src="images/services/pre-export-vet.jpg" alt="Veterinarian with a stethoscope examining a brown and white cow" width="740" height="472" loading="lazy" decoding="async" data-parallax-img></figure>
-            <div class="service__body">
-              <span class="service__num">02</span>
-              <h3>Pre-Export Checks &amp; Vet Approval</h3>
-              <p>All livestock undergo rigorous veterinary screening and pre-export quarantine in our licensed holding facilities.</p>
-            </div>
-          </li>
-          <li class="service" data-service>
-            <figure class="service__media" data-wipe><img src="images/services/maritime-transport.jpg" alt="Multi-deck livestock carrier vessel moored in port" width="1024" height="654" loading="lazy" decoding="async" data-parallax-img></figure>
-            <div class="service__body">
-              <span class="service__num">03</span>
-              <h3>Maritime Transport &amp; Onboard Animal Care</h3>
-              <p>We operate a fleet of specialized livestock vessels with capacities ranging from 2,000 to over 11,000 head.</p>
-            </div>
-          </li>
-          <li class="service" data-service>
-            <figure class="service__media" data-wipe><img src="images/services/port-customs.jpg" alt="Official stamping export documentation on a desk" width="1208" height="685" loading="lazy" decoding="async" data-parallax-img></figure>
-            <div class="service__body">
-              <span class="service__num">04</span>
-              <h3>Port Operations, Customs &amp; Documentation</h3>
-              <p>Our team handles all pre-departure and arrival documentation with local authorities, port officials, and customs.</p>
-            </div>
-          </li>
-        </ol>
+            <div class="showcase__meta"><span><b data-showcase-count>01</b> / 04</span><span class="showcase__bar"><span data-showcase-bar></span></span></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -368,7 +364,7 @@
       <div class="fleet__inner">
         <div class="container fleet__head" data-sea-content>
           <div>
-            <p class="eyebrow"><span class="eyebrow__dot"></span>Our Vessels</p>
+            <p class="eyebrow"><span class="eyebrow__dot"></span><span class="eyebrow__num">04</span>Vessels</p>
             <h2 class="section-title" id="vessels-title" data-split>Built with livestock in mind. <span class="text-glow">Globally proven.</span></h2>
           </div>
           <div class="fleet__intro">
@@ -705,7 +701,7 @@
         <div class="container fleet__hud" aria-hidden="true">
           <span class="fleet__count"><b data-fleet-current>01</b> / 18</span>
           <span class="fleet__bar"><span data-fleet-bar></span></span>
-          <span class="fleet__hint">Scroll to sail through the fleet</span>
+          
         </div>
       </div>
     </section>
@@ -715,7 +711,7 @@
       <div class="glow glow--right" aria-hidden="true"></div>
       <div class="container" data-sea-content>
         <header class="section-head">
-          <p class="eyebrow"><span class="eyebrow__dot"></span>The Live Ark difference</p>
+          <p class="eyebrow"><span class="eyebrow__dot"></span><span class="eyebrow__num">05</span></p>
           <h2 class="section-title" id="why-title" data-split>Why Choose Live Ark Export?</h2>
         </header>
         <div class="bento" data-stagger>
@@ -757,10 +753,9 @@
     <section class="section light faqs" id="faqs" data-sea aria-labelledby="faqs-title">
       <div class="container faqs__grid" data-sea-content>
         <header class="faqs__head">
-          <p class="eyebrow"><span class="eyebrow__dot"></span>Good to know</p>
+          <p class="eyebrow"><span class="eyebrow__dot"></span><span class="eyebrow__num">06</span>FAQs</p>
           <h2 class="section-title" id="faqs-title" data-split>Frequently Asked Questions</h2>
-          <p data-reveal>Can’t find what you’re looking for? Our team is one message away.</p>
-          <button class="btn btn--navy" type="button" data-open-contact data-magnetic data-reveal><span>Ask us directly</span><svg class="btn__icon"><use href="#i-arrow"/></svg></button>
+                    <button class="btn btn--navy" type="button" data-open-contact data-reveal><span>Contact Us</span><svg class="btn__icon"><use href="#i-arrow"/></svg></button>
         </header>
         <div class="faq-list" data-faq data-stagger>
           <div class="faq is-open">
@@ -788,78 +783,103 @@
     </section>
 
     <!-- ============ CONTACT ============ -->
-    <section class="section dark contact" id="contact" data-sea aria-labelledby="contact-title">
+        <section class="section dark contact" id="contact" data-sea aria-labelledby="contact-title">
       <div class="glow glow--center" aria-hidden="true"></div>
-      <div class="container" data-sea-content>
-        <header class="section-head">
-          <p class="eyebrow"><span class="eyebrow__dot"></span>Talk to our team</p>
+      <div class="container contact__grid" data-sea-content>
+        <div class="contact__info">
+          <p class="eyebrow"><span class="eyebrow__dot"></span><span class="eyebrow__num">07</span></p>
           <h2 class="section-title" id="contact-title" data-split>Contact Us</h2>
-        </header>
-        <div class="contact-board">
-          <aside class="touch" data-reveal>
-            <h3 class="touch__title">Get in Touch</h3>
-            <ul class="touch__list">
-              <li><span class="touch__icon"><svg><use href="#i-pin"/></svg></span><div><strong>Location</strong><span>Ireland - Unit 3A Fairgreen house Mullingar</span></div></li>
-              <li><span class="touch__icon"><svg><use href="#i-mail"/></svg></span><div><strong>Email Address</strong><a href="mailto:contact@livearkexports.co.uk">contact@livearkexports.co.uk</a></div></li>
-              <li><span class="touch__icon"><svg><use href="#i-phone"/></svg></span><div><strong>Phone Number</strong><a href="tel:+353857130364">+353 85 713 0364</a></div></li>
-            </ul>
-          </aside>
-          <div class="form-card glass" data-reveal>
-            <form class="contact-form" data-contact-form novalidate>
-              <div class="field__row">
-                <label class="field"><input type="text" name="first_name" autocomplete="given-name" placeholder=" " required><span>First name <i class="req">*</i></span></label>
-                <label class="field"><input type="text" name="last_name" autocomplete="family-name" placeholder=" "><span>Last name</span></label>
-              </div>
-              <label class="field"><input type="email" name="email" autocomplete="email" placeholder=" " required><span>Email <i class="req">*</i></span></label>
-              <label class="field"><textarea name="message" rows="5" placeholder=" "></textarea><span>Comment or Message</span></label>
-              <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-              <div class="form-foot">
-                <button class="btn btn--glow btn--lg" type="submit" data-magnetic><span>Submit</span><svg class="btn__icon"><use href="#i-arrow"/></svg></button>
-                <p class="form-status" role="status" aria-live="polite"></p>
-              </div>
-            </form>
-          </div>
+          <h3 class="contact__sub" data-reveal>Get in Touch</h3>
+          <dl class="contact__lines" data-stagger>
+            <div><dt><svg><use href="#i-mail"/></svg>Email Address</dt><dd><a class="contact__big" href="mailto:contact@livearkexports.co.uk">contact@livearkexports.co.uk</a></dd></div>
+            <div><dt><svg><use href="#i-phone"/></svg>Phone Number</dt><dd><a class="contact__big" href="tel:+353857130364">+353 85 713 0364</a></dd></div>
+            <div><dt><svg><use href="#i-pin"/></svg>Location</dt><dd>Ireland - Unit 3A Fairgreen house Mullingar</dd></div>
+          </dl>
+        </div>
+        <div class="form-card glass" data-reveal>
+          <form class="contact-form" data-contact-form novalidate>
+            <div class="field__row">
+              <label class="field"><input type="text" name="first_name" autocomplete="given-name" placeholder=" " required><span>First name <i class="req">*</i></span></label>
+              <label class="field"><input type="text" name="last_name" autocomplete="family-name" placeholder=" "><span>Last name</span></label>
+            </div>
+            <label class="field"><input type="email" name="email" autocomplete="email" placeholder=" " required><span>Email <i class="req">*</i></span></label>
+            <label class="field"><textarea name="message" rows="5" placeholder=" "></textarea><span>Comment or Message</span></label>
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div class="form-foot">
+              <button class="btn btn--glow btn--lg" type="submit"><span>Submit</span><svg class="btn__icon"><use href="#i-arrow"/></svg></button>
+              <p class="form-status" role="status" aria-live="polite"></p>
+            </div>
+          </form>
         </div>
       </div>
     </section>
 
     <!-- ============ OFFICES ============ -->
-    <section class="section dark offices" data-sea aria-labelledby="offices-title">
+        <section class="section dark offices" data-sea aria-labelledby="offices-title">
       <div class="container" data-sea-content>
-        <header class="section-head">
-          <p class="eyebrow"><span class="eyebrow__dot"></span>Worldwide</p>
-          <h2 class="section-title" id="offices-title" data-split>Our Offices</h2>
+        <header class="offices__head">
+          <div>
+            <p class="eyebrow"><span class="eyebrow__dot"></span><span class="eyebrow__num">08</span></p>
+            <h2 class="section-title" id="offices-title" data-split>Our Offices</h2>
+          </div>
+          <div class="offices__intro" data-reveal>
+            <h3>Global Reach, Local Expertise</h3>
+            <p>With our headquarters in Ireland and a strategic network of regional offices and trusted partners across the globe, we maintain an active presence in:</p>
+          </div>
         </header>
 
         <div class="worldmap" data-reveal>
           <img class="worldmap__img" src="images/about/world-map.png" alt="" width="360" height="360" loading="lazy">
-          <span class="worldmap__pin" style="--x:49.3%;--y:21.6%" data-label="Ireland"></span>
-          <span class="worldmap__pin" style="--x:51.4%;--y:22.7%" data-label="London"></span>
-          <span class="worldmap__pin" style="--x:52%;--y:24.6%" data-label="France"></span>
-          <span class="worldmap__pin" style="--x:58.8%;--y:25.8%" data-label="Moldova"></span>
-          <span class="worldmap__pin" style="--x:52.3%;--y:33.3%" data-label="Algeria"></span>
-          <span class="worldmap__pin" style="--x:39%;--y:75.5%" data-label="Brazil"></span>
+          <span class="worldmap__pin" style="--x:49.3%;--y:21.6%" data-pin="0"><b>Ireland</b></span>
+          <span class="worldmap__pin" style="--x:51.4%;--y:22.7%" data-pin="1"><b>London</b></span>
+          <span class="worldmap__pin" style="--x:52%;--y:24.6%" data-pin="2"><b>France</b></span>
+          <span class="worldmap__pin" style="--x:58.8%;--y:25.8%" data-pin="3"><b>Moldova</b></span>
+          <span class="worldmap__pin" style="--x:52.3%;--y:33.3%" data-pin="4"><b>Algeria</b></span>
+          <span class="worldmap__pin" style="--x:39%;--y:75.5%" data-pin="5"><b>Brazil</b></span>
         </div>
 
-        <ul class="office-grid" data-stagger>
-          <li class="office glass"><img src="images/flags/ireland.jpg" alt="Flag of Ireland" width="480" height="271" loading="lazy"><div><h3>Ireland</h3><address>Unit 3A Fairgreen house<br>Mullingar</address></div></li>
-          <li class="office glass"><img src="images/flags/algeria.jpg" alt="Flag of Algeria" width="480" height="271" loading="lazy"><div><h3>Algeria</h3><address>Section 05 ilot 075 Hammadi,<br>Boumerdés, Algérie</address></div></li>
-          <li class="office glass"><img src="images/flags/united-kingdom.webp" alt="Flag of the United Kingdom" width="480" height="269" loading="lazy"><div><h3>London</h3><address>Unit 113, Great Western Studios<br>65 Alfred Rd</address></div></li>
-          <li class="office glass"><img src="images/flags/brazil.png" alt="Flag of Brazil" width="480" height="270" loading="lazy"><div><h3>Brazil</h3><address>Sape Farm, São Carlos, Brazil</address></div></li>
-          <li class="office glass"><img src="images/flags/moldova.png" alt="Flag of Moldova" width="480" height="270" loading="lazy"><div><h3>Moldova</h3><address>RM Moldova Chisinau<br>Str. Tudor Vlademirscu 12/1</address></div></li>
-          <li class="office glass"><img src="images/flags/france.png" alt="Flag of France" width="480" height="270" loading="lazy"><div><h3>France</h3><address>33 Rue la Fayette,<br>75009 Paris</address></div></li>
-        </ul>
+        <ol class="atlas" data-stagger>
+          <li class="atlas__office" data-office="0" tabindex="0">
+            <span class="atlas__idx">01</span>
+            <img src="images/flags/ireland.jpg" alt="Flag of Ireland" width="480" height="271" loading="lazy">
+            <div><h3>Ireland</h3><address>Unit 3A Fairgreen house<br>Mullingar</address></div>
+          </li>
+          <li class="atlas__office" data-office="1" tabindex="0">
+            <span class="atlas__idx">02</span>
+            <img src="images/flags/united-kingdom.webp" alt="Flag of the United Kingdom" width="480" height="269" loading="lazy">
+            <div><h3>London</h3><address>Unit 113, Great Western Studios<br>65 Alfred Rd</address></div>
+          </li>
+          <li class="atlas__office" data-office="2" tabindex="0">
+            <span class="atlas__idx">03</span>
+            <img src="images/flags/france.png" alt="Flag of France" width="480" height="270" loading="lazy">
+            <div><h3>France</h3><address>33 Rue la Fayette,<br>75009 Paris</address></div>
+          </li>
+          <li class="atlas__office" data-office="3" tabindex="0">
+            <span class="atlas__idx">04</span>
+            <img src="images/flags/moldova.png" alt="Flag of Moldova" width="480" height="270" loading="lazy">
+            <div><h3>Moldova</h3><address>RM Moldova Chisinau<br>Str. Tudor Vlademirscu 12/1</address></div>
+          </li>
+          <li class="atlas__office" data-office="4" tabindex="0">
+            <span class="atlas__idx">05</span>
+            <img src="images/flags/algeria.jpg" alt="Flag of Algeria" width="480" height="271" loading="lazy">
+            <div><h3>Algeria</h3><address>Section 05 ilot 075 Hammadi,<br>Boumerdés, Algérie</address></div>
+          </li>
+          <li class="atlas__office" data-office="5" tabindex="0">
+            <span class="atlas__idx">06</span>
+            <img src="images/flags/brazil.png" alt="Flag of Brazil" width="480" height="270" loading="lazy">
+            <div><h3>Brazil</h3><address>Sape Farm, São Carlos, Brazil</address></div>
+          </li>
+        </ol>
 
         <div class="presence">
-          <div class="presence__body" data-reveal>
-            <p>With our headquarters in Ireland and a strategic network of regional offices and trusted partners across the globe, we maintain an active presence in:</p>
-            <ul class="regions regions--dark">
+          <div class="presence__body">
+            <ul class="regions regions--grid" data-stagger>
               <li><strong>Europe</strong><span>Ireland, United Kingdom, Spain, France, Romania, Croatia, Moldova</span></li>
               <li><strong>Americas</strong><span>Brazil, Uruguay</span></li>
               <li><strong>MENA</strong><span>Algeria, Egypt, Saudi Arabia, UAE, and other Gulf and North African countries</span></li>
               <li><strong>Asia</strong><span>Expanding partnerships in key livestock import markets</span></li>
             </ul>
-            <p>This global footprint allows us to serve our clients with flexibility, speed, and precision, no matter where they are.</p>
+            <p class="presence__foot" data-reveal>This global footprint allows us to serve our clients with flexibility, speed, and precision—no matter where they are.</p>
           </div>
           <figure class="presence__map" data-wipe>
             <img src="images/about/presence-map.jpg" alt="Map of Europe, Africa and South America with flag pins on Ireland, the United Kingdom, France, Moldova, Algeria and Brazil" width="900" height="900" loading="lazy" decoding="async" data-parallax-img>
@@ -872,10 +892,10 @@
     <section class="cta dark" data-sea aria-labelledby="cta-title">
       <div class="cta__media"><img src="images/about/cta-cow-calf.jpg" alt="" width="740" height="493" loading="lazy" decoding="async" data-cta-img></div>
       <div class="container cta__content" data-sea-content>
-        <p class="eyebrow"><span class="eyebrow__dot"></span>Your next shipment</p>
+        <p class="eyebrow"><span class="eyebrow__dot"></span>Ethical. Reliable. Compliant.</p>
         <h2 class="cta__title" id="cta-title" data-split>Ready to Ship With Confidence?</h2>
         <p data-reveal>Join forces with Live Ark Export for trustworthy and ethical transportation of livestock worldwide. Contact us today to discuss your next shipment. Your animals deserve the best.</p>
-        <button class="btn btn--glow btn--xl" type="button" data-open-contact data-magnetic data-reveal><span>Contact Us</span><svg class="btn__icon"><use href="#i-arrow"/></svg></button>
+        <button class="btn btn--glow btn--xl" type="button" data-open-contact data-reveal><span>Contact Us</span><svg class="btn__icon"><use href="#i-arrow"/></svg></button>
       </div>
     </section>
   </main>
@@ -923,7 +943,7 @@
         <img src="images/logo.png" alt="" width="512" height="348">
         <div>
           <h2 id="dialog-title">Contact Us</h2>
-          <p>Tell us about your next shipment — our team will be in touch shortly.</p>
+          <p>Global Livestock Shipping | Ethical. Reliable. Compliant.</p>
         </div>
       </div>
       <form class="contact-form" data-contact-form novalidate>
@@ -963,6 +983,6 @@
   <script src="js/vendor/ScrollTrigger.min.js" defer></script>
   <script src="js/vendor/SplitText.min.js" defer></script>
   <script src="js/vendor/lenis.min.js" defer></script>
-  <script src="js/main.js?v=4" defer></script>
+  <script src="js/main.js?v=10" defer></script>
 </body>
 </html>
