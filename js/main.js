@@ -65,7 +65,7 @@ function setNav(open) {
 }
 navToggle.addEventListener("click", () => setNav(!document.body.classList.contains("nav-open")));
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") setNav(false); });
-window.matchMedia("(min-width: 961px)").addEventListener("change", (e) => { if (e.matches) setNav(false); });
+window.matchMedia("(min-width: 1081px)").addEventListener("change", (e) => { if (e.matches) setNav(false); });
 
 const navLinks = new Map($$("[data-nav]").map((a) => [a.hash.slice(1), a]));
 const spy = new IntersectionObserver((entries) => {
@@ -101,18 +101,19 @@ function heroIntro() {
     [title, ...fades, ...stats].forEach((el) => (el.style.visibility = "visible"));
     return;
   }
-  const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
   gsap.set(title, { autoAlpha: 1 });
   if (window.SplitText) {
     const split = SplitText.create(title, { type: "words", mask: "words" });
-    tl.from(split.words, { yPercent: 115, rotate: 4, duration: 1.4, stagger: 0.07 }, 0);
+    tl.from(split.words, { yPercent: 100, duration: 1.8, stagger: 0.09, ease: "expo.out" }, 0);
   } else {
-    tl.from(title, { y: 60, autoAlpha: 0, duration: 1.2 }, 0);
+    tl.from(title, { y: 40, autoAlpha: 0, duration: 1.6 }, 0);
   }
-  tl.fromTo("[data-hero-media]", { scale: 1.25 }, { scale: 1, duration: 2.4, ease: "power3.out" }, 0)
-    .fromTo(fades, { autoAlpha: 0, y: 34 }, { autoAlpha: 1, y: 0, duration: 1.2, stagger: 0.12 }, 0.45)
-    .fromTo(stats, { autoAlpha: 0, y: 50, scale: 0.96 }, { autoAlpha: 1, y: 0, scale: 1, duration: 1.2, stagger: 0.1 }, 0.7)
-    .add(() => $$("[data-hero-stat] [data-count]").forEach((el, i) => countUp(el, i * 0.08)), 0.8);
+  tl.fromTo("[data-hero-media]", { scale: 1.12 }, { scale: 1, duration: 3.2, ease: "power2.out" }, 0)
+    .fromTo(".hero .eyebrow__dot", { scaleX: 0 }, { scaleX: 1, duration: 1.4, ease: "power2.inOut" }, 0.2)
+    .fromTo(fades, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 1.6, stagger: 0.16 }, 0.6)
+    .fromTo(stats, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 1.6, stagger: 0.14 }, 0.95)
+    .add(() => $$("[data-hero-stat] [data-count]").forEach((el, i) => countUp(el, i * 0.12)), 1);
 }
 
 const preloader = $("[data-preloader]");
@@ -138,29 +139,33 @@ function initReveals() {
     $$("[data-split]").forEach((el) => {
       const split = SplitText.create(el, { type: "words", mask: "words" });
       gsap.from(split.words, {
-        yPercent: 110, duration: 1.2, ease: "expo.out", stagger: 0.05,
+        yPercent: 100, duration: 1.6, ease: "expo.out", stagger: 0.06,
         scrollTrigger: { trigger: el, start: "top 88%" },
       });
     });
     $$("[data-split-lines]").forEach((el) => {
       const split = SplitText.create(el, { type: "lines", mask: "lines", linesClass: "split-line" });
       gsap.from(split.lines, {
-        yPercent: 105, duration: 1.2, ease: "expo.out", stagger: 0.09,
+        yPercent: 100, duration: 1.6, ease: "expo.out", stagger: 0.12,
         scrollTrigger: { trigger: el, start: "top 85%" },
       });
     });
   }
 
-  gsap.set("[data-reveal]", { autoAlpha: 0, y: 46 });
+  $$(".section .eyebrow__dot, .fleet .eyebrow__dot, .cta .eyebrow__dot").forEach((line) => {
+    gsap.fromTo(line, { scaleX: 0 }, { scaleX: 1, duration: 1.4, ease: "power2.inOut", scrollTrigger: { trigger: line, start: "top 90%" } });
+  });
+
+  gsap.set("[data-reveal]", { autoAlpha: 0, y: 28 });
   ScrollTrigger.batch("[data-reveal]", {
     start: "top 90%",
     once: true,
-    onEnter: (els) => gsap.to(els, { autoAlpha: 1, y: 0, duration: 1.2, ease: "power3.out", stagger: 0.1, overwrite: true }),
+    onEnter: (els) => gsap.to(els, { autoAlpha: 1, y: 0, duration: 1.5, ease: "power3.out", stagger: 0.14, overwrite: true }),
   });
 
   $$("[data-stagger]").forEach((group) => {
-    gsap.fromTo(group.children, { autoAlpha: 0, y: 60 }, {
-      autoAlpha: 1, y: 0, duration: 1.2, ease: "power3.out", stagger: 0.1,
+    gsap.fromTo(group.children, { autoAlpha: 0, y: 34 }, {
+      autoAlpha: 1, y: 0, duration: 1.5, ease: "power3.out", stagger: 0.12,
       scrollTrigger: { trigger: group, start: "top 86%" },
     });
   });
@@ -168,8 +173,8 @@ function initReveals() {
   $$("[data-wipe]").forEach((el) => {
     const img = $("img", el);
     const tl = gsap.timeline({ scrollTrigger: { trigger: el, start: "top 85%" } });
-    tl.fromTo(el, { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.5, ease: "expo.inOut" });
-    if (img) tl.fromTo(img, { scale: 1.35 }, { scale: 1, duration: 1.8, ease: "expo.out" }, 0.15);
+    tl.fromTo(el, { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.9, ease: "power3.inOut", clearProps: "clipPath" });
+    if (img) tl.fromTo(img, { scale: 1.18 }, { scale: 1, duration: 2.4, ease: "power2.out" }, 0.1);
   });
 
   $$("[data-parallax-img]").forEach((img) => {
@@ -198,14 +203,14 @@ function initReveals() {
   gsap.matchMedia().add("(min-width: 900px)", () => {
     cards.slice(0, -1).forEach((card, i) => {
       gsap.to(card, {
-        scale: 0.92 + i * 0.02, filter: "brightness(.6)", ease: "none",
-        scrollTrigger: { trigger: cards[i + 1], start: "top bottom", end: `top ${110 + (i + 1) * 28}px`, scrub: true },
+        scale: 0.94 + i * 0.015, filter: "brightness(.55)", ease: "none",
+        scrollTrigger: { trigger: cards[i + 1], start: "top bottom", end: `top ${120 + (i + 1) * 30}px`, scrub: true },
       });
     });
   });
 }
 
-/* ---------- marquee (velocity-reactive) ---------- */
+/* ---------- marquee: slow, steady ticker ---------- */
 function initMarquee() {
   $$("[data-marquee]").forEach((row) => {
     const track = $(".marquee__track", row);
@@ -218,16 +223,12 @@ function initMarquee() {
     const dir = Number(row.dataset.marquee);
     let w = track.offsetWidth;
     let x = dir < 0 ? -w : 0;
-    const skew = gsap.quickTo(row, "skewX", { duration: 0.5, ease: "power3" });
     window.addEventListener("resize", () => { w = track.offsetWidth; });
     gsap.ticker.add((_, dt) => {
-      const v = lenis ? lenis.velocity : 0;
-      const speed = (0.55 + Math.min(Math.abs(v), 60) * 0.09) * dt * 0.06;
-      x -= speed * dir * (v < 0 ? -1 : 1);
+      x -= 0.022 * dt * dir;
       if (x <= -w) x += w;
       if (x > 0) x -= w;
       gsap.set(row, { x });
-      skew(clamp(-v * 0.25, -9, 9));
     });
   });
 }
@@ -319,47 +320,9 @@ function refreshSoon() {
   refreshTimer = setTimeout(() => (hasGSAP ? ScrollTrigger.refresh() : voyage.build()), 80);
 }
 
-/* ---------- pointer niceties: cursor, magnetic, tilt, glow cards ---------- */
+/* ---------- soft gold light that follows the pointer on feature cards ---------- */
 function initPointer() {
   if (!motion || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-  root.classList.add("has-cursor");
-  const cursor = $("[data-cursor]");
-  const label = $("[data-cursor-label]");
-  const dotX = gsap.quickTo(".cursor__dot", "x", { duration: 0.12, ease: "power3" });
-  const dotY = gsap.quickTo(".cursor__dot", "y", { duration: 0.12, ease: "power3" });
-  const ringX = gsap.quickTo([".cursor__ring", ".cursor__label"], "x", { duration: 0.5, ease: "power3" });
-  const ringY = gsap.quickTo([".cursor__ring", ".cursor__label"], "y", { duration: 0.5, ease: "power3" });
-  window.addEventListener("pointermove", (e) => { dotX(e.clientX); dotY(e.clientY); ringX(e.clientX); ringY(e.clientY); });
-  document.addEventListener("pointerover", (e) => {
-    const vessel = e.target.closest(".vessel");
-    cursor.classList.toggle("is-label", Boolean(vessel));
-    label.textContent = vessel ? "View" : "";
-    cursor.classList.toggle("is-hover", !vessel && Boolean(e.target.closest("a, button, [data-tilt], .faq__q")));
-  });
-
-  $$("[data-magnetic]").forEach((el) => {
-    const mx = gsap.quickTo(el, "x", { duration: 0.6, ease: "power3" });
-    const my = gsap.quickTo(el, "y", { duration: 0.6, ease: "power3" });
-    el.addEventListener("pointermove", (e) => {
-      const r = el.getBoundingClientRect();
-      mx((e.clientX - r.left - r.width / 2) * 0.3);
-      my((e.clientY - r.top - r.height / 2) * 0.4);
-    });
-    el.addEventListener("pointerleave", () => { mx(0); my(0); });
-  });
-
-  $$("[data-tilt]").forEach((el) => {
-    gsap.set(el, { transformPerspective: 900 });
-    const rx = gsap.quickTo(el, "rotationX", { duration: 0.8, ease: "power3" });
-    const ry = gsap.quickTo(el, "rotationY", { duration: 0.8, ease: "power3" });
-    el.addEventListener("pointermove", (e) => {
-      const r = el.getBoundingClientRect();
-      ry(((e.clientX - r.left) / r.width - 0.5) * 10);
-      rx(-((e.clientY - r.top) / r.height - 0.5) * 10);
-    });
-    el.addEventListener("pointerleave", () => { rx(0); ry(0); });
-  });
-
   $$("[data-glow-card]").forEach((el) => {
     el.addEventListener("pointermove", (e) => {
       const r = el.getBoundingClientRect();
